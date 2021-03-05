@@ -36,18 +36,18 @@ pour les minutes:
 pour le seconds:
 360/60=6°
 */
-let degHeure = monHeure* 360/3600;
-let degMin = maMin*30/60;
+let degHeure = monHeure* 360/12 + 360/(12*maMin);
+let degMin = maMin*6;
 let degSec = maSec*360/60; 
 
 function demarrerLaMontre() {
 console.log('degre :',degSec);
 console.log('degre :',degMin);
-console.log('degre :',degHeure)
+console.log('degre :',degHeure);
 
-degHeure = degHeure + 0.1;
-degMin = degMin + 0.5;
 degSec = degSec + 6;
+degMin = degMin + 0.1;
+degHeure += 0.008;
 
 AIGUILLEHR.style.transform=
     'rotate('+ degHeure +'deg)';

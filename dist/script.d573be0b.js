@@ -155,17 +155,17 @@ pour le seconds:
 360/60=6°
 */
 
-var degHeure = monHeure * 360 / 3600;
-var degMin = maMin * 30 / 60;
+var degHeure = monHeure * 360 / 12 + 360 / (12 * maMin);
+var degMin = maMin * 6;
 var degSec = maSec * 360 / 60;
 
 function demarrerLaMontre() {
   console.log('degre :', degSec);
   console.log('degre :', degMin);
   console.log('degre :', degHeure);
-  degHeure = degHeure + 0.1;
-  degMin = degMin + 0.5;
   degSec = degSec + 6;
+  degMin = degMin + 0.1;
+  degHeure += 0.008;
   AIGUILLEHR.style.transform = 'rotate(' + degHeure + 'deg)';
   AIGUILLEMIN.style.transform = 'rotate(' + degMin + 'deg)';
   AIGUILLESEC.style.transform = 'rotate(' + degSec + 'deg)'; // Déplacer les aiguilles 
@@ -201,7 +201,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59243" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63393" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
